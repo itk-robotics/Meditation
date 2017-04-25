@@ -80,7 +80,7 @@
         if True :
             with open (self.behaviorAbsolutePath() + self.speechFile) as input:
                 list = json.load(input)
-                list = [x.encode('UTF8') for x in list] #unicode to string
+                list = [x.encode('UTF8') for x in list]
         else :
             list = ["Welcome to the body scan \\pau=500\\ The Breath, Sound, Body provides a rare opportunity for us to experience our body as it is, without judging or trying to change it. It may allow us to notice and release a source of tension we weren't aware of before, such as a hunched back or clenched \\pau=100\\ jaw muscles. It may draw our attention to a source of pain and discomfort. Our feelings of resistance and anger toward pain often only serve to increase that pain; according to research, by simply noticing the pain we're experiencing, without trying to change it, we may actually feel some relief. The body scan is designed to counteract the negative feelings toward our bodies. Now we begin",
 "$memSoundEvent=singing_bowl.ogg \\pau=6000\\ ",
@@ -156,26 +156,13 @@
         self.alife = self.session().service("ALAutonomousLife")
         self.motion.wakeUp()
         self.tracker = self.session().service("ALTracker")
-        """
-        #no good. Puts the physical robot to sleep
-        ALProxy("ALAutonomousLife").setState("disabled")
-        """
 
         self.alife.setAutonomousAbilityEnabled("All", False) #Trial A
-        self.tracker.unregisterAllTargets() #attempt to get rid of whoever is tracked on launch
-
-        #ALProxy("ALBasicAwareness").setEnabled(False)
-        """
-        ALProxy("ALTracker").stopTracker() #tracker is used by ALBasicAwareness but not disabled alongside it
-        #last tested, stopTracker does NOT prevent tracking!!
-        """
+        self.tracker.unregisterAllTargets() 
 
         self.motion.setBreathEnabled('Arms', True)
-        #self.motion.setIdlePostureEnabled("Head", True)
 
-        #ALProxy("ALFaceDetection").pause(True) #expected to disable by basic awareness.setEnable False
-
-        self.onStopped() #NO?Difference between proxy and session service?
+        self.onStopped() 
 
 
     def onInput_onStop(self):
