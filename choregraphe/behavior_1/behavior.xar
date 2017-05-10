@@ -48,6 +48,9 @@
             return None
         from time import sleep
         self.logger.debug(line)
+
+        #
+
         line = " \\bound=W\\ \\vct=82\\ \\rspd=85\\ " + line + "\\pau=2000\\"
         speechID = self.animatedSpeech.post.say(line)
 
@@ -79,8 +82,7 @@
         import json
         with open (self.behaviorAbsolutePath() + self.speechFile) as input:
             list = json.load(input)
-            list = [x.encode('UTF8') for x in list]
-            
+            list = [x.encode('UTF8') for x in list] #unicode to string
         return list
 
     def onInput_onStop(self):
@@ -147,13 +149,26 @@
         self.alife = self.session().service("ALAutonomousLife")
         self.motion.wakeUp()
         self.tracker = self.session().service("ALTracker")
+        """
+        #no good. Puts the physical robot to sleep
+        ALProxy("ALAutonomousLife").setState("disabled")
+        """
 
         self.alife.setAutonomousAbilityEnabled("All", False) #Trial A
-        self.tracker.unregisterAllTargets() 
+        self.tracker.unregisterAllTargets() #attempt to get rid of whoever is tracked on launch
+
+        #ALProxy("ALBasicAwareness").setEnabled(False)
+        """
+        ALProxy("ALTracker").stopTracker() #tracker is used by ALBasicAwareness but not disabled alongside it
+        #last tested, stopTracker does NOT prevent tracking!!
+        """
 
         self.motion.setBreathEnabled('Arms', True)
+        #self.motion.setIdlePostureEnabled("Head", True)
 
-        self.onStopped() 
+        #ALProxy("ALFaceDetection").pause(True) #expected to disable by basic awareness.setEnable False
+
+        self.onStopped() #NO?Difference between proxy and session service?
 
 
     def onInput_onStop(self):
@@ -516,7 +531,6 @@ class MyClass(GeneratedClass):
 
     def onInput_onStop(self):
         self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
-        self.onStopped() #activate the output of the box]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /></Box><Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="1" /></Diagram></BehaviorKeyframe></BehaviorLayer><ActuatorList model=""><ActuatorCurve name="value" actuator="HeadPitch" mute="0" unit="0"><Key frame="11" value="-12.9199" /><Key frame="18" value="-0.351564" /><Key frame="27" value="11.7774" /><Key frame="35" value="11.8652" /><Key frame="61" value="-4.04423" /><Key frame="69" value="-4.13213" /><Key frame="87" value="-4.04423" /></ActuatorCurve><ActuatorCurve name="value" actuator="HeadYaw" mute="0" unit="0"><Key frame="11" value="-6.15235" /><Key frame="18" value="-10.3711" /><Key frame="27" value="-21.4453" /><Key frame="35" value="-25.5762" /><Key frame="42" value="-31.5527" /><Key frame="48" value="-31.5527" /><Key frame="55" value="-31.5527" /><Key frame="61" value="-31.377" /><Key frame="69" value="-20.918" /><Key frame="87" value="-4.74609" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipPitch" mute="1" unit="0" /><ActuatorCurve name="value" actuator="HipRoll" mute="1" unit="0" /><ActuatorCurve name="value" actuator="KneePitch" mute="1" unit="0" /><ActuatorCurve name="value" actuator="LElbowRoll" mute="1" unit="0" /><ActuatorCurve name="value" actuator="LElbowYaw" mute="1" unit="0" /><ActuatorCurve name="value" actuator="LHand" mute="1" unit="1" /><ActuatorCurve name="value" actuator="LShoulderPitch" mute="1" unit="0" /><ActuatorCurve name="value" actuator="LShoulderRoll" mute="1" unit="0" /><ActuatorCurve name="value" actuator="LWristYaw" mute="1" unit="0" /><ActuatorCurve name="value" actuator="RElbowRoll" mute="0" unit="0"><Key frame="10" value="29.7949" /><Key frame="14" value="37.0898" /><Key frame="18" value="49.9438" /><Key frame="23" value="57.4145" /><Key frame="28" value="63.5215" /><Key frame="32" value="69.9469" /><Key frame="37" value="72.232" /><Key frame="41" value="77.6" /><Key frame="44" value="77.6" /><Key frame="55" value="57.0065"><Tangent side="left" interpType="bezier" abscissaParam="-4.63919" ordinateParam="14.1821" /><Tangent side="right" interpType="bezier" abscissaParam="5.67469" ordinateParam="7.25531" /></Key><Key frame="62" value="64.2967" /><Key frame="68" value="58.9872" /><Key frame="74" value="55.1293" /><Key frame="84" value="48.1641" /><Key frame="94" value="37.0019" /><Key frame="118" value="29.7949" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowYaw" mute="0" unit="0"><Key frame="10" value="70.8398" /><Key frame="14" value="72.334" /><Key frame="18" value="72.4219" /><Key frame="23" value="73.125" /><Key frame="28" value="81.0352" /><Key frame="32" value="88.8574" /><Key frame="37" value="97.9102" /><Key frame="41" value="96.9434" /><Key frame="44" value="96.1523" /><Key frame="48" value="96.9434" /><Key frame="51" value="96.7676" /><Key frame="55" value="96.2402" /><Key frame="58" value="95.4492" /><Key frame="61" value="86.8359" /><Key frame="67" value="87.3633" /><Key frame="74" value="87.0117" /><Key frame="84" value="87.8906" /><Key frame="94" value="87.8906" /><Key frame="118" value="70.8398" /></ActuatorCurve><ActuatorCurve name="value" actuator="RHand" mute="0" unit="1"><Key frame="10" value="0.587873" /><Key frame="14" value="0.586116" /><Key frame="18" value="0.584359" /><Key frame="23" value="0.278559" /><Key frame="28" value="0.02" /><Key frame="32" value="0.02" /><Key frame="37" value="0.02" /><Key frame="41" value="0.02" /><Key frame="44" value="0.02" /><Key frame="48" value="0.02" /><Key frame="51" value="0.02" /><Key frame="55" value="0.02" /><Key frame="58" value="0.02" /><Key frame="61" value="0.02" /><Key frame="67" value="0.02" /><Key frame="74" value="0.02" /><Key frame="84" value="0.02" /><Key frame="94" value="0.358524" /><Key frame="118" value="0.587873" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderPitch" mute="0" unit="0"><Key frame="10" value="88.5937" /><Key frame="14" value="86.3086" /><Key frame="18" value="83.8477" /><Key frame="23" value="79.0137" /><Key frame="28" value="70.4883" /><Key frame="32" value="63.2813" /><Key frame="51" value="40.9773" /><Key frame="55" value="39.9226" /><Key frame="67" value="41.2557" /><Key frame="70" value="46.0897" /><Key frame="76" value="52.4118" /><Key frame="79" value="52.9244" /><Key frame="84" value="59.2034" /><Key frame="94" value="66.0938" /><Key frame="118" value="88.5937" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderRoll" mute="0" unit="0"><Key frame="10" value="-8.26171" /><Key frame="14" value="-9.05273" /><Key frame="18" value="-8.4375" /><Key frame="23" value="-9.75586" /><Key frame="28" value="-10.8984" /><Key frame="32" value="-11.1621" /><Key frame="37" value="-11.8652" /><Key frame="41" value="-13.2715" /><Key frame="44" value="-11.25" /><Key frame="48" value="-14.2383" /><Key frame="51" value="-24.3457" /><Key frame="55" value="-23.8184" /><Key frame="58" value="-20.8301" /><Key frame="61" value="-15.7324" /><Key frame="67" value="-4.57031" /><Key frame="74" value="-3.16406" /><Key frame="84" value="-2.98828" /><Key frame="94" value="-3.42773" /><Key frame="118" value="-8.26171" /></ActuatorCurve><ActuatorCurve name="value" actuator="RWristYaw" mute="0" unit="0"><Key frame="10" value="4.12851" /><Key frame="14" value="14.8513" /><Key frame="18" value="24.1678" /><Key frame="23" value="32.2539" /><Key frame="28" value="36.6484" /><Key frame="32" value="27.0682" /><Key frame="37" value="21.1795" /><Key frame="41" value="18.5427" /><Key frame="44" value="19.158" /><Key frame="48" value="16.8728" /><Key frame="51" value="16.7849" /><Key frame="55" value="16.1697" /><Key frame="58" value="16.0818" /><Key frame="61" value="15.2029" /><Key frame="67" value="14.1482" /><Key frame="74" value="14.7634" /><Key frame="84" value="11.5993" /><Key frame="94" value="0.876518" /><Key frame="118" value="4.12851" /></ActuatorCurve></ActuatorList></Timeline></Box><Box name="Show Image" id="8" localization="8" tooltip="display an image on the screen&#x0A;&#x0A;V1.0.0&#x0A;" x="971" y="0"><bitmap>media/images/box/interaction/rec_movie.png</bitmap><script language="4"><content><![CDATA[class MyClass(GeneratedClass):
 
     def onLoad(self):
         self.running = True
