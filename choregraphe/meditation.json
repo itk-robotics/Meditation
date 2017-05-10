@@ -1,6 +1,5 @@
 [  
   "^call(ALSpeakingMovement.setEnabled(1))",
-  "The body scan meditation, \\pau=100\\ was created by Diana Winston for the U C L A \\pau=100\\ marc center.",  
   "Welcome to the body scan. \\pau=500\\ This provides a rare opportunity for us to experience our body as it is\\pau=500\\, without judging or trying to change it. \\pau=500\\ It may allow us to notice and release a source of tension \\pau=500\\ we weren't aware of before, \\pau=500\\ such as a hunched back\\pau=100\\ or clenched \\pau=100\\ jaw muscles. It may draw our attention to a source of pain \\pau=100\\ and discomfort. \\pau=500\\ Our mixed feelings \\pau=500\\ and anger towards pain often only serve to increase that pain. \\pau=500\\ By simply noticing the pain we're experiencing \\pau=500\\ we may actually feel some relief. The body scan you are about to experience, \\pau=500\\is designed to counteract the negative feelings toward our bodies. \\pau=1000\\ Now we begin.",
   "^call(ALSpeakingMovement.setEnabled(0)) \\pau=100\\ ",
   "$memAnimationEvent=1 \\pau=6000\\ ",
@@ -11,7 +10,7 @@
   "Take a few deep breaths \\pau=1000\\ $memBreathAnimationEvent=1 \\pau=3000\\ ",
   "And as you take a deep breath, bring in more oxygen enlivening the body \\pau=1000\\ . And as you exhale, have a sense of relaxing more deeply.",
   "$memNoticeAnimation=feet You can notice your feet on the floor, notice the sensations of your feet touching the floor. \\pau=1000\\ The weight and pressure, \\pau=500\\ vibration, \\pau=500\\ heat. \\pau=500\\ ",
-  "$memNoticeAnimation=legs You can notice your legs against the chair \\pau=500\\ , pressure \\pau=500\\ , pulsing \\pau=500\\ , heaviness \\pau=500\\ , lightness.",
+  "$memNoticeAnimation=legs You can notice your legs against the chair or cushion On the floor.\\pau=500\\ , pressure \\pau=500\\ , pulsing \\pau=500\\ , heaviness \\pau=500\\ , lightness.",
   "Bring your attention into your stomach area. If your stomach is tense or tight, let it soften. \\pau=1000\\ Take a breath. \\pau=1000\\ $memBreathAnimationEvent=1 \\pau=3000\\ ",
   "$memNoticeAnimation=hands Notice your hands. Are your hands tense or tight? See if you can allow them to soften. \\pau=1000\\ ",
   "$memNoticeAnimation=arms Notice your arms. Feel any sensation in your arms. Let your shoulders be soft. \\pau=1000\\ ",
@@ -58,7 +57,7 @@
   "You'll stay with your breath \\pau=500\\ one breath at a time",
   "If you notice yourself lost in thoughts, maybe you can say to yourself \\pau=500\\ thinking",
   "Or wandering",
-  "And then redirect your attention",
+  "Redirect your attention",
   "Returning back to the breathing",
   "Now if you find a sound",
   "Or a body sensation",
@@ -90,4 +89,5 @@
   "$memEyesToggle=1 ",
   "And then when you're ready, you can open your eyes",
   "$memAnimationEvent=1 \\pau=4000\\ "
+  "The body scan meditation, \\pau=100\\ was created by Diana Winston for the U C L A \\pau=100\\ marc center.",  
 ]
