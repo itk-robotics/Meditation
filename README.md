@@ -1,5 +1,8 @@
 # Meditation
-Guided meditation with Pepper
+Guided meditation with Pepper.
+Mindful Meditations created by Diana Winston for the UCLA MARC Center
+http://ggia.berkeley.edu/practice/body_scan_meditation#
+
 
 ## Installation
 
