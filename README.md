@@ -11,4 +11,4 @@ Open `choregraphe/yoga.pml` in Choregraphe and upload to robot.
 ## Usage
 
 Use voice triggers to start the application.
-The robot will play a sound queue when it is ready. Touch Pepper's head sensor to begin. To pause or resume the guided meditation, touch Pepper's head again.
+The robot will play a sound cue when it is ready. Touch Pepper's head sensor to begin. To pause or resume the guided meditation, touch Pepper's head again.
