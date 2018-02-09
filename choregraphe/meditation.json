@@ -88,6 +88,6 @@
   "Take a breath \\pau=500\\ $mem=breath.ogg \\pau=2000\\ ",
   "$memEyesToggle=1 ",
   "And then when you're ready, you can open your eyes",
-  "$memAnimationEvent=1 \\pau=4000\\ "
-  "The body scan meditation, \\pau=100\\ was created by Diana Winston for the U C L A \\pau=100\\ marc center.",  
+  "$memAnimationEvent=1 \\pau=4000\\ ",
+  "The body scan meditation, \\pau=100\\ was created by Diana Winston for the U C L A \\pau=100\\ marc center."  
 ]
