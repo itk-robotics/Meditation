@@ -4,9 +4,11 @@ Mindful Meditations created by Diana Winston for the UCLA MARC Center
 http://ggia.berkeley.edu/practice/body_scan_meditation#
 
 
-## Installation
+## Setup and Installation
 
-Open `choregraphe/yoga.pml` in Choregraphe and upload to robot.
+Open `choregraphe/meditation.pml` in Choregraphe 
+Change the file name depending on the language version you want to use in the box named "Guided meditation".
+(in line 15; filename = 'dk_meditation.json' # dk/en?
 
 ## Usage
 
